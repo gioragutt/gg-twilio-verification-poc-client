@@ -20,7 +20,7 @@ const Navigator = TabNavigator(
   {
     initialRouteName: 'Initial',
     swipeEnabled: false,
-    animationEnabled: false,
+    animationEnabled: true,
     lazy: true,
     tabBarComponent: () => null,
   },

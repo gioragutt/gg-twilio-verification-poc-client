@@ -31,16 +31,18 @@ const MAX_LENGTH_NUMBER = 20
 // your brand's theme primary color
 const brandColor = '#744BAC'
 
-export default class PhoneVerification extends Component {
-  state = {
-    phone: null,
-    sentCode: false,
-    spinner: false,
-    country: {
-      cca2: 'IL',
-      countryCode: '972'
-    }
+const INITIAL_STATE = {
+  phone: null,
+  sentCode: false,
+  spinner: false,
+  country: {
+    cca2: 'IL',
+    countryCode: '972'
   }
+}
+
+export default class PhoneVerification extends Component {
+  state = INITIAL_STATE
 
   get textInput() {
     return this.refs.form.refs.textInput
@@ -85,6 +87,7 @@ export default class PhoneVerification extends Component {
   }
 
   onSuccessfulVerification = async () => {
+    this.setState(INITIAL_STATE)
     await auth.setToken('some token')
     this.props.navigation.navigate('SomePage')
   }
