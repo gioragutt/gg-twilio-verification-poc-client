@@ -21,7 +21,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-import PhoneVerification from './PhoneVerification'
+import PhoneVerification from 'phoneVerification'
 
 const Input = ({title, placeholder, onPress, onChangeText}) => (
   <View style={styles.fullWidth}>
