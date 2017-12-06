@@ -15,7 +15,7 @@ const Navigator = TabNavigator(
   {
     Initial: { screen: Initial },
     PhoneVerification: { screen: PhoneVerification },
-    Home: { screen: SomePage },
+    SomePage: { screen: SomePage },
   },
   {
     initialRouteName: 'Initial',
