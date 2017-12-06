@@ -168,7 +168,7 @@ export default class PhoneVerification extends Component {
               autoFocus
               placeholderTextColor={brandColor}
               selectionColor={brandColor}
-              maxLength={sentCode ? 6 : 20}
+              maxLength={sentCode ? MAX_LENGTH_CODE : MAX_LENGTH_NUMBER}
               onSubmitEditing={this.onSubmit}
             />
           </View>

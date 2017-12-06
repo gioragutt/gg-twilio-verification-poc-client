@@ -8,7 +8,7 @@ const Initial = (props) => {
   auth.getToken().then(token => {
     props.navigation.navigate(token ? 'SomePage' : 'PhoneVerification')
   })
-  return null
+  return null 
 }
 
 const Navigator = TabNavigator(

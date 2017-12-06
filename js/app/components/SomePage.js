@@ -1,9 +1,10 @@
 //@flow
 
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React from 'react'
+import {StyleSheet, Text, View, Button} from 'react-native'
+import {auth} from 'shared/services'
 
-export default () => (
+export default ({navigation}) => (
   <View style={styles.container}>
     <Text style={styles.welcome}>
       YOU ARE VERIFIED!!!
@@ -11,6 +12,15 @@ export default () => (
     <Text style={styles.instructions}>
       How do you feel about that?
     </Text>
+    <View style={styles.clearTokenButton}>
+      <Button
+        title="Remove verification"
+        onPress={() => {
+          auth.clearToken()
+          navigation.navigate('PhoneVerification')
+        }}
+      />
+    </View>
   </View>
 )
 
@@ -26,4 +36,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-});
+  clearTokenButton: {
+    backgroundColor: 'gray',
+    padding: 20,
+    margin: 10,
+  },
+})
