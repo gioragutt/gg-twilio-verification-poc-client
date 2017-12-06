@@ -21,6 +21,8 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+import PhoneVerification from './PhoneVerification'
+
 const Input = ({title, placeholder, onPress, onChangeText}) => (
   <View style={styles.fullWidth}>
     <View style={{flexDirection: 'row'}}>
@@ -31,25 +33,26 @@ const Input = ({title, placeholder, onPress, onChangeText}) => (
 )
 
 export default class App extends Component<{}> {
-  state = {
-    phone: '',
-    code: '',
-    codeSent: false
-  }
+  // state = {
+  //   phone: '',
+  //   code: '',
+  //   codeSent: false
+  // }
 
-  onPhoneChange = phone => this.setState({phone})
-  onCodeChange = code => this.setState({code})
-  sendCode = () => console.warn('Send Code') || this.setState({codeSent: true})
-  verifyCode = () => console.warn('Verify Code')
+  // onPhoneChange = phone => this.setState({phone})
+  // onCodeChange = code => this.setState({code})
+  // sendCode = () => console.warn('Send Code') || this.setState({codeSent: true})
+  // verifyCode = () => console.warn('Verify Code')
 
-  renderInput = () => !this.state.codeSent
-    ? <Input title="Send Code" placeholder="Enter phone" onChangeText={this.onPhoneChange} onPress={this.sendCode}/>
-    : <Input title="Verify Code" placeholder="Enter code" onChangeText={this.onCodeChange} onPress={this.verifyCode}/>
+  // renderInput = () => !this.state.codeSent
+  //   ? <Input title="Send Code" placeholder="Enter phone" onChangeText={this.onPhoneChange} onPress={this.sendCode}/>
+  //   : <Input title="Verify Code" placeholder="Enter code" onChangeText={this.onCodeChange} onPress={this.verifyCode}/>
 
   render() {
     return (
       <View style={styles.container}>
-        {this.renderInput()}
+        {/* {this.renderInput()} */}
+        <PhoneVerification/>
       </View>
     )
   }

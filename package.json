@@ -10,7 +10,7 @@
 		"frisbee": "^1.6.4",
 		"react": "16.0.0",
 		"react-native": "0.50.4",
-		"react-native-country-picker-modal": "^0.3.0",
+		"react-native-country-picker-modal": "https://github.com/xcarpentier/react-native-country-picker-modal.git",
 		"react-native-form": "^2.1.2",
 		"react-native-loading-spinner-overlay": "^0.5.2"
 	},
