@@ -20,11 +20,11 @@ import {times, noop} from 'lodash'
 
 import Spinner from 'react-native-loading-spinner-overlay'
 import Form from 'react-native-form'
-import {api} from 'shared/services/api'
+import {api, auth} from 'shared/services'
 import CountryPicker from './CountryPicker'
 import CountryCode from './CountryCode'
 
-const MAX_LENGTH_CODE = 6
+const MAX_LENGTH_CODE = 4
 const CODE_PLACEHOLDER = times(MAX_LENGTH_CODE).map(_ => '_').join(' ')
 const MAX_LENGTH_NUMBER = 20
 
@@ -62,7 +62,7 @@ export default class PhoneVerification extends Component {
         countryCode: this.state.country.countryCode
       }
 
-      const res = await api('/sendCode', {body})
+      const res = await api.api('/sendCode', {body})
 
       this.setState({phone: body, sentCode: true})
 
@@ -84,9 +84,14 @@ export default class PhoneVerification extends Component {
     }, 100)
   }
 
+  onSuccessfulVerification = async () => {
+    await auth.setToken('some token')
+    this.props.navigation.navigate('SomePage')
+  }
+
   verifyCode = this.asyncOperation({spinner: true}, async () => {
     try {
-      const res = await api('/verifyCode', {body: {
+      const res = await api.api('/verifyCode', {body: {
         code: this.formValues.code,
         ...this.state.phone
       }})
@@ -94,19 +99,12 @@ export default class PhoneVerification extends Component {
       this.textInput.blur()
       this.showAlert('Success!', 'You have successfully verified your phone number', [{
         text: 'Continue',
-        onPress: this.props.onSuccess || noop
+        onPress: this.onSuccessfulVerification
       }])
     } catch (err) {
       this.showAlert('Oops!', err.message)
     }
   })
-
-  onChangeText = (val) => {
-    if (!this.state.sentCode) return
-    if (val.length === MAX_LENGTH_CODE) {
-      this.verifyCode()
-    }
-  }
 
   tryAgain = () => {
     this.textInput.setNativeProps({text: ''})
@@ -163,7 +161,6 @@ export default class PhoneVerification extends Component {
               underlineColorAndroid={'transparent'}
               autoCapitalize={'none'}
               autoCorrect={false}
-              onChangeText={this.onChangeText}
               placeholder={sentCode ? CODE_PLACEHOLDER : 'Phone Number'}
               keyboardType={Platform.OS === 'ios' ? 'number-pad' : 'numeric'}
               style={[styles.textInput, textStyle]}
