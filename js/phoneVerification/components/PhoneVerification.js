@@ -18,6 +18,7 @@ import {
 
 import {times, noop} from 'lodash'
 
+import codePush from 'react-native-code-push'
 import Spinner from 'react-native-loading-spinner-overlay'
 import Form from 'react-native-form'
 import {api, auth} from 'shared/services'
@@ -41,7 +42,7 @@ const INITIAL_STATE = {
   }
 }
 
-export default class PhoneVerification extends Component {
+class PhoneVerification extends Component {
   state = INITIAL_STATE
 
   get textInput() {
@@ -243,3 +244,5 @@ const styles = StyleSheet.create({
     color: 'grey'
   },
 })
+
+export default codePush(PhoneVerification)
