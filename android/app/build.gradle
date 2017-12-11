@@ -110,9 +110,9 @@ android {
     }
     signingConfigs {
         release {
-            storePassword APPCENTER_KEYSTORE_PASSWORD
-            keyAlias APPCENTER_KEY_ALIAS
-            keyPassword APPCENTER_ALIAS_PASSWORD
+            storePassword System.getProperty("APPCENTER_KEYSTORE_PASSWORD")
+            keyAlias System.getProperty("APPCENTER_KEY_ALIAS")
+            keyPassword System.getProperty("APPCENTER_ALIAS_PASSWORD")
         }
     }
     splits {
