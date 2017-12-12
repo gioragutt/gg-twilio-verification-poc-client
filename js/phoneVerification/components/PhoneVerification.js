@@ -13,7 +13,8 @@ import {
   TouchableOpacity,
   View,
   Platform,
-  Alert
+  Alert,
+  Button,
 } from 'react-native'
 
 import {times, noop} from 'lodash'
@@ -180,6 +181,15 @@ class PhoneVerification extends Component {
             <Text style={styles.buttonText}>{buttonText}</Text>
           </TouchableOpacity>
           {this._renderFooter()}
+          <Button
+            title="Code Sync"
+            onPress={() => {
+              codePush.sync({
+                  updateDialog: true,
+                  installMode: codePush.InstallMode.IMMEDIATE
+              });
+            }}
+          />
         </Form>
         <Spinner
           visible={this.state.spinner}
@@ -245,4 +255,6 @@ const styles = StyleSheet.create({
   },
 })
 
-export default codePush(PhoneVerification)
+export default codePush({
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME
+})(PhoneVerification)
