@@ -150,7 +150,7 @@ class PhoneVerification extends Component {
   render() {
     const {sentCode} = this.state
 
-    const headerText = `What's your ${sentCode ? 'verification code' : 'phone number'}?`
+    const headerText = `TEST: What's your ${sentCode ? 'verification code' : 'phone number'}?`
     const buttonText = sentCode ? 'Verify confirmation code' : 'Send confirmation code'
     const textStyle = sentCode && styles.codeTextInput
     return (
