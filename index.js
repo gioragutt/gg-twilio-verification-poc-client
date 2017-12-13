@@ -1,4 +1,7 @@
 import { AppRegistry } from 'react-native';
-import App from 'app';
+import App from './js/app';
+import CodePush from 'react-native-code-push'
 
-AppRegistry.registerComponent('twilioVerifyPoc', () => App);
+const CodePushedApp = CodePush(App)
+
+AppRegistry.registerComponent('twilioVerifyPoc', () => CodePushedApp);

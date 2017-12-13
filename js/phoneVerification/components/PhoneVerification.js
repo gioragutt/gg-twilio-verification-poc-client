@@ -19,10 +19,10 @@ import {
 
 import {times, noop} from 'lodash'
 
-import codePush from 'react-native-code-push'
+import CodePush from 'react-native-code-push'
 import Spinner from 'react-native-loading-spinner-overlay'
 import Form from 'react-native-form'
-import {api, auth} from 'shared/services'
+import {api, auth} from '../../shared/services'
 import CountryPicker from './CountryPicker'
 import CountryCode from './CountryCode'
 
@@ -150,7 +150,7 @@ class PhoneVerification extends Component {
   render() {
     const {sentCode} = this.state
 
-    const headerText = `TEST: What's your ${sentCode ? 'verification code' : 'phone number'}?`
+    const headerText = `What's your ${sentCode ? 'verification code' : 'phone number'}?`
     const buttonText = sentCode ? 'Verify confirmation code' : 'Send confirmation code'
     const textStyle = sentCode && styles.codeTextInput
     return (
@@ -184,10 +184,11 @@ class PhoneVerification extends Component {
           <Button
             title="Code Sync"
             onPress={() => {
-              codePush.sync({
+              console.warn('..')
+              CodePush.sync({
                   updateDialog: true,
-                  installMode: codePush.InstallMode.IMMEDIATE
-              });
+                  installMode: CodePush.InstallMode.IMMEDIATE
+              })
             }}
           />
         </Form>
@@ -255,6 +256,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default codePush({
-  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME
-})(PhoneVerification)
+export default PhoneVerification
