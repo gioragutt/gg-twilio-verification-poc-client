@@ -1,6 +1,6 @@
 <resources>
     <string moduleConfig="true" name="appcenterCrashes_whenToSendCrashes">ALWAYS_SEND</string>
     <string moduleConfig="true" name="appcenterAnalytics_whenToEnableAnalytics">ALWAYS_SEND</string>
-    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">76b3f184-9dd3-4ae2-9a5b-1568be25042d</string>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">DeNsOroFr41bHuTz9vhAF2C3-WITHk0YoK3bM</string>
     <string name="app_name">twilioVerifyPoc</string>
 </resources>
