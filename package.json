@@ -47,9 +47,9 @@
 		"styled-components": "^2.2.4"
 	},
 	"devDependencies": {
-		"babel-jest": "^21.2.0",
+		"babel-jest": "25.5.1",
 		"babel-preset-react-native": "^4.0.0",
-		"jest": "21.2.1",
+		"jest": "25.5.1",
 		"react-test-renderer": "16.0.0"
 	},
 	"jest": {
